@@ -17,6 +17,6 @@ public class PacketBucket {
             this.count = 0;
         }
 
-        return this.count++ >= 300;
+        return this.count++ > 300;
     }
 }

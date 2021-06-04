@@ -66,13 +66,11 @@ public class AntiCrash extends Module {
 
                 final Player p = e.getPlayer();
 
-                //This is much faster than any loop, Also less bytecode
+                if (AntiCrash.this.plugin.getProfile(p).getJoinedMillis() < 1000L) return;
 
-                final int checkSize = crashChecks.length;
+                for (CrashCheck crashCheck : crashChecks) {
 
-                for (int i = 0; i < checkSize; i++) {
-
-                    if (!crashChecks[i].handle(e)) continue;
+                    if (!crashCheck.handle(e)) continue;
 
                     e.setCancelled(true);
 

@@ -29,6 +29,8 @@ public class Profile {
     private long lastCustomPayload;
     private float customPayloadBuffer;
 
+    private long joinedMillis = System.currentTimeMillis();
+
     public long getLastCustomPayload() {
         return System.currentTimeMillis() - this.lastCustomPayload;
     }
@@ -39,6 +41,10 @@ public class Profile {
 
     public float increaseCustomPayloadBuffer(float buffer) {
         return this.customPayloadBuffer = Math.min(10000F, this.customPayloadBuffer + buffer);
+    }
+
+    public long getJoinedMillis() {
+        return (System.currentTimeMillis() - this.joinedMillis);
     }
 
     public float getCustomPayloadBuffer() {
